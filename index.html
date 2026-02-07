@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Rose Day</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Playfair Display', serif;
+  background: linear-gradient(to bottom, #fff1f2, #fdecef);
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #5a1f2d;
+}
+
+.box {
+  display: none;
+  max-width: 90%;
+  animation: fade 1.2s ease;
+}
+
+.active {
+  display: block;
+}
+
+h1, h2 {
+  font-weight: normal;
+}
+
+p {
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+button {
+  margin-top: 30px;
+  padding: 12px 30px;
+  border-radius: 40px;
+  border: none;
+  background: #b9375e;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #a12f52;
+}
+
+img {
+  width: 230px;
+  border-radius: 20px;
+  margin-top: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+@keyframes fade {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Falling petals */
+.petal {
+  position: absolute;
+  top: -10%;
+  font-size: 20px;
+  animation: fall linear infinite;
+}
+
+@keyframes fall {
+  0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(120vh) rotate(360deg); opacity: 0; }
+}
+
+.rose {
+  font-size: 90px;
+  animation: bloom 2s infinite ease-in-out;
+}
+
+@keyframes bloom {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Petals -->
+<script>
+for(let i=0;i<25;i++){
+  let petal = document.createElement("div");
+  petal.className = "petal";
+  petal.innerHTML = "🌸";
+  petal.style.left = Math.random()*100 + "vw";
+  petal.style.animationDuration = 5 + Math.random()*5 + "s";
+  document.body.appendChild(petal);
+}
+</script>
+
+<!-- STEP 1 -->
+<div class="box active" id="step1">
+  <h1>Happy Rose Day 🌹</h1>
+  <p>
+    This little surprise<br>
+    is made only for you.
+  </p>
+  <button onclick="next(2)">Open</button>
+</div>
+
+<!-- STEP 2 -->
+<div class="box" id="step2">
+  <h2>My Letter 🤍</h2>
+  <p>
+    You are my calm,<br>
+    my comfort,<br>
+    and my favorite feeling.
+  </p>
+  <img src="https://drive.google.com/uc?export=view&id=1Lc4vLCKWr6K7thxtrRfnFB3XkgkfmQMo">
+  <button onclick="next(3)">One last thing…</button>
+</div>
+
+<!-- STEP 3 -->
+<div class="box" id="step3">
+  <div class="rose">🌹</div>
+  <h2>For You, <br><b>DARSHAN</b></h2>
+  <p>
+    Always blooming for you 🌹
+  </p>
+</div>
+
+<script>
+function next(step){
+  document.querySelectorAll('.box').forEach(b => b.classList.remove('active'));
+  document.getElementById('step'+step).classList.add('active');
+}
+</script>
+
+</body>
+</html>
